@@ -28,7 +28,7 @@ Pod::Spec.new do |spec|
   TODO: Add long description of the pod here.
                    DESC
 
-  spec.homepage     = "https://github.com/chris781245/PRCModuleSDK"
+  spec.homepage     = "https://github.com/PRCModuleSDK"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -39,8 +39,8 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  # spec.license      = "MIT (example)"
-  spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -68,7 +68,12 @@ Pod::Spec.new do |spec|
   # spec.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  spec.ios.deployment_target = "12.0"
+  # spec.ios.deployment_target = "5.0"
+  # spec.osx.deployment_target = "10.7"
+  # spec.watchos.deployment_target = "2.0"
+  # spec.tvos.deployment_target = "9.0"
+  # spec.visionos.deployment_target = "1.0"
+
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -76,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/chris781245/PRCModuleSDK", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/PRCModuleSDK.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -87,6 +92,13 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
+  spec.ios.deployment_target = '12.0'
+
+  spec.xcconfig = { 'CLANG_MODULES_AUTOLINK' => 'YES' }
+  spec.requires_arc  = true
+  spec.static_framework = true
+  spec.vendored_frameworks = 'PRCModuleSDK.framework'
+  spec.resource = "PRCModuleSDK.framework/PRCModuleSDKResource.bundle"
   # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
   # spec.exclude_files = "Classes/Exclude"
 
@@ -101,9 +113,9 @@ Pod::Spec.new do |spec|
   #  non-essential files like tests, examples and documentation.
   #
 
-  spec.vendored_frameworks = "PRCModuleSDK.framework"
-  spec.resource  = "PRCModuleSDK.framework/PRCModuleSDKResource.bundle"
+  # spec.resource  = "icon.png"
   # spec.resources = "Resources/*.png"
+
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
 
@@ -126,10 +138,11 @@ Pod::Spec.new do |spec|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  spec.requires_arc = true
+  # spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
+
   spec.dependency 'SDWebImage'            "~> 5.18.3"
   spec.dependency 'TTTAttributedLabel'    "~> 2.0.0"
   spec.dependency 'Masonry',              "~> 1.1.0"
