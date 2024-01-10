@@ -1,0 +1,6 @@
+framework module PRCModuleSDK {
+  umbrella header "PRCModuleSDK.h"
+  export *
+
+  module * { export * }
+}
